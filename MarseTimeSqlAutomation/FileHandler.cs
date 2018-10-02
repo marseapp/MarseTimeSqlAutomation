@@ -35,9 +35,17 @@ namespace MarseTimeSqlAutomation
             
             string pathName = Path.Combine(pathDirectory, pathFileName);
             DeleteData(pathName);
-            using (WebClient client = new WebClient())
+            try
             {
-                client.DownloadFile(new Uri(Environment.GetEnvironmentVariable("DataSourceLocation")), pathName);
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(new Uri(Environment.GetEnvironmentVariable("DataSourceLocation")), pathName);
+                }
+            }
+            catch (WebException)
+            {
+                // Error while Downloading, download again until works
+                pathName = "";
             }
             return pathName;
         }
