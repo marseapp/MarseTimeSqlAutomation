@@ -33,8 +33,8 @@ namespace MarseTimeSqlAutomation
                     {
                         connection.Open();
                         command.Parameters.Add("@IntakeId", System.Data.SqlDbType.Int);
-                        command.Parameters.Add("@Name", System.Data.SqlDbType.VarChar, 100);
-                        command.Parameters.Add("@Week", System.Data.SqlDbType.VarChar, 100);
+                        command.Parameters.Add("@Name", System.Data.SqlDbType.VarChar, 50);
+                        command.Parameters.Add("@Week", System.Data.SqlDbType.VarChar, 50);
 
                         var ttmList = DataParsing.ttmList;
                         for (int i = 0; i < ttmList.Count; i++)
@@ -67,12 +67,12 @@ namespace MarseTimeSqlAutomation
                     {
                         connection.Open();
                         command.Parameters.Add("@IntakeId", System.Data.SqlDbType.Int);
-                        command.Parameters.Add("@Date", System.Data.SqlDbType.VarChar, 100);
-                        command.Parameters.Add("@Time", System.Data.SqlDbType.VarChar, 100);
-                        command.Parameters.Add("@Location", System.Data.SqlDbType.VarChar, 100);
-                        command.Parameters.Add("@Classroom", System.Data.SqlDbType.VarChar, 100);
-                        command.Parameters.Add("@Module", System.Data.SqlDbType.VarChar, 100);
-                        command.Parameters.Add("@Lecturer", System.Data.SqlDbType.VarChar, 100);
+                        command.Parameters.Add("@Date", System.Data.SqlDbType.VarChar, 50);
+                        command.Parameters.Add("@Time", System.Data.SqlDbType.VarChar, 50);
+                        command.Parameters.Add("@Location", System.Data.SqlDbType.VarChar, 50);
+                        command.Parameters.Add("@Classroom", System.Data.SqlDbType.VarChar, 50);
+                        command.Parameters.Add("@Module", System.Data.SqlDbType.VarChar, 50);
+                        command.Parameters.Add("@Lecturer", System.Data.SqlDbType.VarChar, 50);
 
                         var ttdmList = DataParsing.ttdmList;
                         for (int i = 0; i < ttdmList.Count; i++)
@@ -163,7 +163,7 @@ namespace MarseTimeSqlAutomation
                         command.Parameters.Add("@Date", System.Data.SqlDbType.VarChar, 50);
                         command.Parameters.Add("@Description", System.Data.SqlDbType.VarChar, 50);
 
-                        command.Parameters["@Date"].Value = DateTime.Today;
+                        command.Parameters["@Date"].Value = DateTime.Now;
                         command.Parameters["@Description"].Value = description;
 
                         command.ExecuteNonQuery();
